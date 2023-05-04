@@ -1,0 +1,186 @@
+.loginbg {
+  background-image: url('../assets/bg1.png');
+  /* background-color: red; */
+  height: 100vh;
+  margin-top: -60px;
+  padding-top: 50px;
+}
+
+.v-card__text b {
+  color: #fff;
+}
+
+.v-application--is-ltr .v-tabs--centered>.v-tabs-bar .v-tabs-bar__content>:first-child:not(.v-tabs-slider-wrapper),
+.v-application--is-ltr .v-tabs--centered>.v-tabs-bar .v-tabs-slider-wrapper+*,
+.v-application--is-ltr .v-tabs--fixed-tabs>.v-tabs-bar .v-tabs-bar__content>:first-child:not(.v-tabs-slider-wrapper),
+.v-application--is-ltr .v-tabs--fixed-tabs>.v-tabs-bar .v-tabs-slider-wrapper+*,
+.v-application--is-rtl .v-tabs--centered>.v-tabs-bar .v-tabs-bar__content>:last-child,
+.v-application--is-rtl .v-tabs--fixed-tabs>.v-tabs-bar .v-tabs-bar__content>:last-child {
+  margin-left: left !important;
+}
+
+.theme--light.v-btn.v-btn--has-bg {
+  background-color: #1371C3 !important;
+  border-color: #1371C3;
+  color: #FFFFFF;
+}
+
+/* .theme--light.v-toolbar.v-sheet {
+  border-bottom: 1px solid #001B2B;
+} */
+
+.v-card__subtitle, .v-card__text, .v-card__title {
+   padding: 0 !important;
+}
+
+
+#uattendance .v-toolbar__content {display: none;}
+#uattendance .v-card__text { margin-top:5px;}
+
+#userplayslip .payslipcontent { border:1px solid red; }
+
+.theme--light.v-btn.v-btn--has-bg {
+  height: 40px !important;
+}
+
+ul li[data-v-bdda1ea4] {
+  margin: 0px 5px;
+  font-size: 13px !important;
+  padding: 0px 3px;
+}
+
+#userleave .v-toolbar__content {height:0px !important; display: none;}
+#userleave header { height:0px !important;}
+#userleave  .v-text-field[data-v-18bfb272] {
+  width: 100%;
+}
+/* #managerpayroll .v-toolbar__content {height:0px !important; } */
+/* #managerpayroll header { height:0px !important;} */
+
+#managerattendance .v-toolbar__content {height:0px !important; display: none;}
+#managerattendance header { height:0px !important;}
+
+#managerleaveprofile .v-toolbar__content {height:0px !important;}
+
+#adminleavemaster header { height:56px !important;}
+#adminleavemaster .v-toolbar__content {height:0px !important; }
+
+#adminapplyleave header { height:56px !important;}
+#adminapplyleave .v-toolbar__content {height:0px !important; }
+
+#adminaddattendance header { height:56px !important;}
+#adminaddattendance .v-toolbar__content {height:0px !important; }
+
+#adminattedanceview .v-window__container {
+  padding: 20px 10px 0px 10px;
+}
+
+.v-application .rounded-xl {
+  border-radius: 10px !important;
+}
+.v-application .mt-10 {
+  margin-top: 10px !important;
+}
+
+.col,
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col-auto,
+.col-lg,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg-auto,
+.col-md,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-auto,
+.col-sm,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-auto,
+.col-xl,
+.col-xl-1,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl-auto {
+  width: 100%;
+  padding-bottom: 0 !important;
+}
+
+/* .theme--light.v-app-bar.v-toolbar.v-sheet {
+  background-color: #f2f5f7 !important;
+} */
+
+.v-application--wrap {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 0 !important;
+  max-width: 100%;
+  position: relative;
+}
+.sidemenu {
+  /* height: 100vh; */
+  overflow-y: auto;
+  position: fixed;
+  top: 64px;
+  z-index: 100;
+}

@@ -1,0 +1,581 @@
+<template>
+  <div id="userleave">
+    <v-app-bar app>
+      <router-link to="/UserDashboard" style="text-decoration: none; color: inherit;">
+      <v-row>
+        <v-btn icon>
+          <v-icon style="color:red;margin-left:20px" size="40">mdi-home</v-icon>
+        </v-btn>
+      </v-row>
+      <v-row>
+        <span style="font-weight: 400; font-size: 12px; color: black;margin-left:20px">Home</span>
+      </v-row>
+
+
+      </router-link>
+      <v-img class="mx-2" max-height="40" max-width="40" contain></v-img>
+        <router-link to="/HelloWorld" style="text-decoration: none; color: inherit;margin-left:100px">
+      <img src="../assets/dizitive2.png" width="180px" alt="dizitiveit.com" />
+        </router-link>
+    </v-app-bar>
+    <Usermenu></Usermenu>
+    <v-card width="90%" style="margin-left:110px;margin-top:20px;">
+      <v-toolbar color="cyan" dark flat style="height: 100px">
+        <template v-slot:extension>
+          <v-tabs v-model="tabs" style="">
+            <v-tab v-for="item in items" :key="item">
+              {{ item }}
+            </v-tab>
+          </v-tabs>
+        </template>
+      </v-toolbar>
+
+      <v-tabs-items v-model="tabs" >
+        <v-tab-item>
+          <v-card style="padding:10px;">
+             <v-row>
+        <v-col style="font-weight: bold;">LEAVE BALANCE</v-col>
+    </v-row>
+               <v-container >
+          <v-row fluid style="margin-left:220px; margin-bottom:20px;">
+            <v-col cols="12" md="4" sm="2">
+              <v-card
+               class="mx-auto mt-10 rounded-xl"
+   width="170"
+    height="100"
+    color="#385F73"
+    elevation="5">
+     <v-card-title class='white--text ml-0'>
+       <span style="width:100%; float:left; margin-top:15px; margin-bottom: 10px;">
+       Casual Leaves
+       </span>
+       </v-card-title>
+     <v-card-subtitle>
+       <h3 class="headline black--text text--accent-2" style="margin-top:10px">{{ this.CausalLeavecount}}</h3></v-card-subtitle>
+    </v-card>
+    </v-col>
+    <v-col cols="12" md="4" sm="2">
+              <v-card
+               class="mx-auto mt-10 rounded-xl"
+   width="170"
+    height="100"
+    color="green"
+    elevation="5"><v-card-title   class='white--text ml-0'>
+      <span style="width:100%; float:left; margin-top:15px; margin-bottom: 10px;;">
+      Sick Leaves</span></v-card-title>
+     <v-card-subtitle> <h3 class="headline black--text text--accent-2" style="margin-top:10px">{{this.SickLeavecount}} </h3></v-card-subtitle></v-card>
+    </v-col>
+           <v-col cols="12" md="4" sm="2">
+
+           </v-col>
+
+
+          </v-row>
+
+      </v-container>
+            <v-card-text>
+
+                <v-form
+                @submit.prevent="SaveLeave"
+                ref="form"
+                v-model="valid"
+                lazy-validation
+              >
+           <v-row class="pl-0 pr-0">
+
+<v-col cols="12" md="3">
+   <v-text-field
+                       class="pr-1"
+                            label="Employee Id"
+                            placeholder="Employee Id"
+                             v-model="  this.userid"
+                            readonly
+                            dense
+                           outlined
+                          ></v-text-field>
+</v-col>
+<v-col cols="12" md="3">
+   <v-select
+                  class="pr-1"
+                    :items="leavetype"
+                    label="Leave Type"
+                     v-model="user.leaveName"
+                    dense
+                    outlined
+                  ></v-select>
+</v-col>
+<v-col cols="12" md="3">
+  <v-text-field class="pr-1" type="date"  :min="nowDate" v-model="user.startDate"
+    label="Start Date" outlined dense ></v-text-field>
+</v-col>
+<v-col cols="12" md="3">
+   <v-text-field class="pr-1" type="date"  label="End Date"  :min="nowDate" v-model="user.endDate" dense outlined ></v-text-field>
+</v-col>
+
+<v-col cols="12">
+     <v-textarea
+          name="input-7-1"
+          label="Reason"
+          v-model="user.shortForm"
+          rows="2"
+          dense outlined
+        ></v-textarea>
+</v-col>
+
+
+            <!-- <v-col cols="12" sm="10" md="8" lg="6">
+                       <v-text-field
+                       class="pr-1"
+                            label="Employee Id"
+                            placeholder="Employee Id"
+                             v-model="  this.userid"
+                            readonly
+                            dense
+                           outlined
+                          ></v-text-field>
+
+
+                  <v-select
+                  class="pr-1"
+                    :items="leavetype"
+                    label="Leave Type"
+                     v-model="user.leaveName"
+                    dense
+                    outlined
+                  ></v-select>
+
+
+  <v-text-field class="pr-1" type="date"  :min="nowDate" v-model="user.startDate"
+    label="Start Date" outlined dense ></v-text-field>
+
+
+  <v-text-field class="pr-1" type="date"  label="End Date"  :min="nowDate" v-model="user.endDate" dense outlined ></v-text-field>
+
+        <v-textarea
+          name="input-7-1"
+          label="Reason"
+          v-model="user.shortForm"
+          dense outlined
+        ></v-textarea>
+
+
+                      <v-btn type="submit" style="background:red;color:white;margin-right:100px">Save</v-btn>
+                  </v-col> -->
+              </v-row>
+
+ <v-row>
+                    <v-col cols="12" style="text-align:right">
+                     <v-btn type="submit" style="background:red;color:white;margin-bottom:20px">Save</v-btn>
+
+                    </v-col>
+
+                  </v-row>
+
+                </v-form>
+
+            </v-card-text>
+
+          </v-card>
+        </v-tab-item>
+        <v-tab-item>
+          <v-card style="padding:10px;">
+            <v-card-text>
+
+              	<v-data-table
+    :headers="headers"
+     :items="this.leavelist"
+    :items-per-page="5"
+    class="elevation-1"
+  >
+
+     <template v-slot:item.actions="{ item }">
+              <v-btn v-if="item.status == 'PENDING'"
+                color="success"
+                  @click="CancellLeave(item)"
+
+                >Cancel</v-btn
+              >
+               <v-btn v-if="item.status == 'APPROVED'"
+                color="success"
+                  @click="CancellLeave(item)"
+
+                >Cancel</v-btn
+              >
+
+            </template>
+
+
+  </v-data-table>
+            </v-card-text>
+          </v-card>
+
+        </v-tab-item>
+      </v-tabs-items>
+    </v-card>
+
+     <v-dialog v-model="dialogDelete" max-width="500px">
+                      <v-card>
+                        <v-card-title
+                          >Your leave is already completed,<br>
+                           you can continue to  apply for <br>leave you are going to LOP,
+                          </v-card-title
+                        >
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn color="blue darken-1" text @click="cancel()">Cancel</v-btn>
+
+                          <v-spacer></v-spacer>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                     <div class="text-center">
+
+     <v-layout row justify-center align-center>
+    <v-progress-circular
+         v-show="isProgress == true"
+      style="margin-top:200px"
+
+     indeterminate :size="70" :width="7" color="black"
+    >
+     <v-avatar class="img">
+      <img src="../assets/dizitive1.png"  alt="logo">
+     </v-avatar>
+
+    </v-progress-circular>
+
+     </v-layout>
+
+    </div>
+    <v-snackbar color="green" v-model="snackbar">
+      {{ text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn text v-bind="attrs" @click="snackbar = false"> Close </v-btn>
+      </template>
+    </v-snackbar>
+  </div>
+</template>
+
+<script>
+import servicescall from "../Services";
+import BluckUpload from "./BluckUpload";
+import Attendence from "./Attendence";
+import Usermenu from "./Usermenu";
+export default {
+  name: "UserLeaveapply",
+
+   props:['userjwt','employeeId'],
+  mixins: [servicescall],
+  components: {
+    BluckUpload,
+    Attendence,
+    Usermenu
+  },
+  data() {
+    return {
+      tabs: null,
+       userid:"",
+        Leavedata:[],
+        CausalLeavecount:"",
+        SickLeavecount:"",
+      AttendenceDetails: [],
+           isprogress:false,
+      leavetype:["Sick",
+                    "Casual"],
+      monitems:["Janury","February","March","April","May","June","July","August","September","October","November","December"],
+      yearitems:["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026","2027","2028","2029","2030"],
+      user: {
+        inTime: "",
+        outTime: "",
+        attendanceDay: "",
+      },
+       leaveIdresult:"",
+       leaveIdresult1:"",
+      headers: [
+
+          { text: 'Employee Id',value:'employeeId'},
+          { text: 'Leave Name ',value:'leaveName'},
+          { text: 'Start Date',value:'startDate' },
+           { text: "End Date", value: "endDate", },
+           { text: 'Status ',value:'status'},
+           {text:'Action',value:'actions'}
+
+        ],
+
+      //  date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      //   date1: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      // menu: false,
+      // modal: false,
+      // menu2: false,
+      //  menu1: false,
+      // modal1: false,
+      // menu23: false,
+       nowDate: new Date().toISOString().slice(0,10),
+      employeelist: [],
+      leavelist:[],
+      result:[],
+      valid: false,
+      showText: false,
+      selected: "",
+        Cancelled:"CANCELLED",
+dialogDelete: false,
+
+      snackbar: false,
+      text: "",
+       userid:"",
+
+      user:{
+        leaveName:"",
+        startDate:"",
+        endDate:"",
+        shortForm:"",
+
+      },
+
+      items: ["Apply Leave","View Leave"],
+    };
+  },
+  mounted() {
+    this.getList()
+
+     this.userid =localStorage.getItem('id')
+      this. Sickcount = localStorage.getItem("Sickcount");
+     this. Causalcount = localStorage.getItem("Causalcount");
+
+      console.log("sick and causual count",this.Sickcount,this.Causalcount)
+     this.getLeaveByid()
+     this.getLeaveMaster()
+      this.getdashboard()
+
+  },
+  methods: {
+    getdashboard() {
+        var userid =localStorage.getItem('id')
+      this.getleavedashboard(userid).then((response) => {
+        console.log("Get All employee bank", response.data.LeaveAudit);
+         for (var i = 0; i < response.data.LeaveAudit.length; i++) {
+           if(response.data.LeaveAudit[i].leaveType=='Casual'){
+             this.CausalLeavecount=response.data.LeaveAudit[i].leaveBalance
+           }
+           if(response.data.LeaveAudit[i].leaveType=='Sick'){
+             this.SickLeavecount=response.data.LeaveAudit[i].leaveBalance
+           }
+            localStorage.setItem('Sickcount', this.SickLeavecount);
+               localStorage.setItem('Causalcount', this.CausalLeavecount);
+          var Sickcount = localStorage.getItem("Sickcount");
+            var Causalcount = localStorage.getItem("Causalcount");
+
+        }
+
+
+        console.log("Get All Leavedata",Sickcount ,Causalcount);
+      });
+    },
+        SaveLeave() {
+      console.log("json", this.user, this.valid);
+      this.$refs.form.validate();
+      console.log("json", this.user, this.valid);
+     this.$refs.form.validate();
+
+      if (this.$refs.form.validate()) {
+           this.checkLeavestatus();
+
+         if(this.edituser==false){
+
+
+         }
+        //  else {
+        //    console.log("Edited")
+        //     this.editedDesig();
+
+        //  }
+
+      }
+    },
+
+     confirmToLeave(){
+      this.PostApply();
+      this.dialogDelete=false
+    },
+    cancel(){
+ this.dialogDelete=false
+    },
+
+    checkLeavestatus(){
+         console.log("startDate", this.user.startDate);
+      console.log("endDate", this.user.endDate);
+      const d1= new Date(this.user.startDate)
+       const d2= new Date(this.user.endDate)
+       const time =Math.abs(d2-d1)
+       var dy=Math.ceil(time / (1000*60*60*24))
+
+
+             var type=this.user.leaveName
+             console.log("Number of days",dy,type);
+           if(this.user.leaveName == "Sick"){
+            if(this.Sickcount<dy){
+                this.dialogDelete=true
+              }
+            else{
+                  this.PostApply()
+             }
+
+      }
+      else{
+             if(this.Causalcount<dy){
+                this.dialogDelete=true
+             }
+              else{
+                  this.PostApply()
+             }
+        }
+    },
+
+      PostApply() {
+
+     if(this.user.leaveName == "Sick"){
+        this.leaveid=this.leaveIdresult1
+      }
+      else if(this.user.leaveName == "Casual"){
+          this.leaveid=this.leaveIdresult
+      }
+        // this.user.startDate=this.date
+        // this.user.endDate=this.date1
+        //  console.log("startDate", this.user.startDate);
+        console.log("startDate", this.user.startDate);
+        console.log("endDate", this.user.endDate);
+          // console.log("endDate",    this.userid);
+      var reqJSON = this.user;
+      console.log("check", reqJSON);
+        this.isProgress=true;
+      this.ApplyReq(this.userid,this.leaveid, reqJSON).then((response) => {
+
+        console.log("In post", response);
+        if (response.status == 200) {
+             this.isprogress=false;
+          this.text = response.data.message;
+          this.snackbar = true;
+           location.reload();
+            this.getLeaveByid()
+
+        } else {
+             this.isprogress=false;
+          this.text = response.data.message;
+          this.snackbar = true;
+        }
+      });
+    },
+
+
+       CancellLeave(item) {
+         this.loading = true;
+            item.createloading = true;
+            var leaveRequestId=item.leaveRequestId
+            var leavetype=item.leaveName
+
+             this.userid =item.employeeId
+               if(item.leaveName == "Sick"){
+        this.leaveid=this.leaveIdresult1
+      }
+      else if(item.leaveName == "Casual"){
+          this.leaveid=this.leaveIdresult
+      }
+      console.log("leaveRequestId", this.leaveid, leavetype == "Sick");
+      console.log("Accepted", this.Cancelled);
+
+
+
+      this.LeaveCancell(leaveRequestId,this.Cancelled, this.userid,this.leaveid
+      ).then(response => {
+        console.log("In post", response);
+        if (response.status == 200) {
+          this.text = response.data.message;
+          this.snackbar = true;
+            location.reload();
+        } else {
+          this.text = response.data.message;
+          this.snackbar = true;
+        }
+      });
+    },
+
+    getList() {
+      console.log("satya11",this.date,this.date1)
+      this.getlistOfEmployees().then((response) => {
+        console.log("Get All employee list", response.data.Employee);
+        for (var i = 0; i < response.data.Employee.length; i++) {
+          this.employeelist.push({
+            text: response.data.Employee[i].employeeId,
+          });
+        }
+
+
+        console.log("Get All employee list", this.employeelist);
+      });
+    },
+      getLeaveByid() {
+      this.getleave( this.userid).then((response) => {
+        console.log("Get All employee list", response.data.Leave);
+       this.leavelist = response.data.Leave;
+        console.log("Get leave", this.leavelist);
+
+
+
+      });
+    },
+       getLeaveMaster() {
+      console.log("Get All LeaveMaster");
+      this.getleaveMasterDetails().then((response) => {
+
+         for (var i = 0; i <response.data.LeaveMaster.length; i++) {
+            if(response.data.LeaveMaster[i].leaveType == "Casual"){
+
+                   this.leaveIdresult= response.data.LeaveMaster[i].leaveId
+
+                           //this.leaveIdresult.push(response.data.LeaveMaster[i].leaveId);
+                           console.log("Get All satya1111",  this.leaveIdresult);
+             }
+             if(response.data.LeaveMaster[i].leaveType == "Sick"){
+
+                   this.leaveIdresult1= response.data.LeaveMaster[i].leaveId
+
+                           //this.leaveIdresult.push(response.data.LeaveMaster[i].leaveId);
+                           console.log("Get All satya1111",  this.leaveIdresult1);
+             }
+             else{
+
+             }
+
+        }
+
+
+      });
+    },
+
+  },
+};
+</script>
+<style scoped>
+.v-progress-circular {
+  margin: 1rem;
+}
+</style>
+<style scoped>
+.id1 {
+  width: 60%;
+  padding: 6px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.id1:focus {
+  border: 3px solid #555;
+}
+.v-text-field{
+      width: 300px;
+}
+</style>

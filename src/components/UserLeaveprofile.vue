@@ -1,0 +1,115 @@
+<template>
+  <div>
+    <v-app-bar app
+    dark
+    prominent
+    style="height:65px;background:linear-gradient(90deg, rgba(2,101,129,1) 0%, rgba(0,76,95,1) 0%, rgba(0,76,95,1) 48%, rgba(14,114,139,1) 99%);"
+    >
+ <router-link to="/UserDashboard" style="text-decoration: none; color: inherit;margin-bottom:55px;">
+      <v-row>        
+          <v-icon style="color:white;margin-left:20px;margin-top:20px;" large >mdi-home</v-icon>
+      </v-row>
+      </router-link>
+
+<v-toolbar-title class="white--text " style="margin-bottom:55px; margin-left:50px;" ><img src="../assets/dis_logo_2022a.png" alt="dizitiveit.com" width="350px"></v-toolbar-title>
+<!-- <v-toolbar-title class="white--text " style="margin-bottom:55px;margin-left:200px; " v-if="drawer == true">  <img src="../assets/dis_logo_2022a.png" alt="dizitiveit.com" width="350px"></v-toolbar-title> -->
+<v-spacer></v-spacer>
+
+
+<v-avatar class="mr-2 mt-1 avt"><img 
+          alt="user"
+          src="../assets/customer-service.7460972.png"
+        
+        > <v-file-input
+              hide-input
+              class="inputpic"
+            
+              prepend-icon="mdi-plus"
+            ></v-file-input></v-avatar>
+<!-- <v-icon large  color="white" style="padding:10px;" @click="logout()">mdi-logout </v-icon> -->
+</v-app-bar>
+     <!-- <v-app-bar app>
+      <router-link to="/UserDashboard" style="text-decoration: none; color: inherit;">
+      <v-row>
+        <v-btn icon>
+          <v-icon style="color:red;margin-left:20px" size="30">mdi-home</v-icon>
+        </v-btn>
+      </v-row>
+  
+
+
+      </router-link>
+      <v-img class="mx-2" max-height="40" max-width="40" contain></v-img>
+        <router-link to="/UserDashboard" style="text-decoration: none; color: inherit;margin-left:0px; margin-top:10px;">
+      <img src="../assets/dizitive2.png" width="180px" alt="dizitiveit.com" />
+        </router-link>
+    </v-app-bar> -->
+    <Usermenu></Usermenu>
+<div >
+      <Tabs >
+         <!-- <Tab name="Leave Dashboard" selected="true" >
+          <div>
+           <UserLeaveDashboard></UserLeaveDashboard>
+          </div>
+        </Tab> -->
+         <Tab name="Leaves Audit" selected="true">
+          <div>
+           <UserLeaveEntitlement></UserLeaveEntitlement>
+          </div>
+        </Tab>
+        <Tab name="Leaves" >
+          <div>
+           <UserLeaveapply></UserLeaveapply>
+          </div>
+        </Tab>
+
+
+
+
+
+
+
+      </Tabs>
+    </div>
+  </div>
+</template>
+
+<script>
+import Tab from "@/components/Tab";
+import Tabs from "@/components/Tabs";
+import Usermenu from "./Usermenu";
+
+import UserLeaveapply from "./UserLeaveapply";
+import UserLeaveDashboard from "./UserLeaveDashboard";
+import UserLeaveEntitlement from "./UserLeaveEntitlement";
+
+
+
+
+
+
+export default {
+  name: "UserLeaveprofile",
+  components: {
+
+    Tab,
+    Tabs,
+     Usermenu,
+
+UserLeaveapply,
+UserLeaveDashboard,
+UserLeaveEntitlement
+
+
+
+
+  },
+  data() {
+    return {
+      count: 1,
+      activeComponent: false,
+      activefiled: false,
+    };
+  },
+};
+</script>
